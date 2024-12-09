@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "pages#index"
 
   get "pages/index"
+  get "/inscritos",    to: "courses#inscritos",       as: "inscritos_courses"
 
   resources :courses do
     resources :enrollments, only: [ :create ]

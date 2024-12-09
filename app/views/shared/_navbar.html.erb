@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary px-auto px-md-10 mx-0 mb-3 fixed-top border-top border-bottom border-2 border-info">
   <div class="container-fluid">
 
-    <strong class="ms-2 fs-5"> 
-        <%= link_to "PLANTILLA", root_path, class:"navbar-brand text-body-secondary" %>
+    <strong class="col-12 col-md-auto ms-2 ms-sm-0 my-3 fs-5"> 
+        <%= link_to "U $an $ebastián", root_path, class:"navbar-brand px-3 py-3 text-warning-emphasis bg-info border border-2 rounded" %>
     </strong>
 
     <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,9 @@
           <% if current_user.admin? %>
             <li class="nav-item col-12 col-md-auto ms-2 ms-sm-0">
               <%= link_to "Crear Curso", new_course_path, class:"nav-link fs-5 ms-2 ms-md-0 btn btn-light " %>
+            </li>
+            <li class="nav-item col-12 col-md-auto ms-2 ms-sm-0">
+              <%= link_to "Inscritos por curso", inscritos_courses_path, class:"nav-link fs-5 ms-2 ms-md-0 btn btn-light " %>
             </li>
           <% else %>
             <li class="nav-item col-12 col-md-auto ms-2 ms-sm-0">

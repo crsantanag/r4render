@@ -1,0 +1,57 @@
+
+<h2>Alumnos inscritos por curso</h2>
+
+<div id="courses">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+
+        <thead>
+          <tr class="table-primary">
+            <th class="col-3" scope="col">Título</th>
+            <th class="col-9" scope="col">Descripción</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+            <% @courses.each do |course| %>
+
+                <tr class="table-light">
+                    <th class="text-start" scope="col"> <%= course.title %> <br>Duración: <%= course.duration %> días</th>
+                    <td class="text-start"> <%= course.description %> </td>
+                </tr>
+
+                <!-- Lista de inscritos por curso -->
+                <tr>
+                    <td colspan="4">
+
+                        <% if course.enrollments.count == 0 %>
+                            <p>SIN INSCRITOS</p>
+                        <% else %>
+                            <% if course.enrollments.count == 1 %>
+                                <strong>Alumno : </strong><br>
+                            <% else %>
+                                <strong>Alumnos : </strong><br>
+                            <% end %>
+                            <ul>
+                                <% course.enrollments.each do |enrollment| %>
+                                    <li>
+                                        <div class="d-flex align-items-start ms-2 mb-2">  
+                                            <%= enrollment.user.name %> <br>
+                                            <%= enrollment.progress%> días de avance
+                                        </div>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+
+                    </td>
+                </tr>
+
+            <% end %>
+        </tbody>
+
+    </table>
+
+  </div>
+</div>

@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action only: [ :new, :create, :edit, :update, :destroy ] do
+  before_action only: [ :new, :create, :inscritos, :edit, :update, :destroy ] do
     authorize_request([ "admin" ])
   end
 
@@ -10,6 +10,10 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+  end
+
+  def inscritos
+    @courses = Course.order(created_at: :desc)
   end
 
   # GET /courses/1 or /courses/1.json
