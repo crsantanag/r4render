@@ -1,0 +1,18 @@
+
+<div id="<%= dom_id course %>">
+  <tr class="table-light">
+    <th class="text-start" scope="row"> <%= course.title %> - Duración: <%= course.duration %> días</th>
+    <td class="text-start"> <%= course.description %> </td>
+    <td>
+      <div class="d-flex justify-content-center"> 
+        <% if current_user.admin? %>
+          <%= link_to "VER",       course, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "INSCRIBIR", course, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </td>
+
+  </tr>
+</div>
+

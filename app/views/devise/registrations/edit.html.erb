@@ -1,0 +1,47 @@
+<h2>Editar cuenta</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ps-2 col-11 col-md-6 border border-2 border-secondary-subtle rounded", style:"height: 35px" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(Deje este campo en blanco si no quiere cambiar su password)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "ps-2 col-7 col-md-3 border border-2 border-secondary-subtle rounded", style:"height: 35px" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirmar password", class: "ps-2 col-7 col-md-3 border border-2 border-secondary-subtle rounded", style:"height: 35px" %>
+  </div>
+
+  <div class="my-2">
+    <%= f.label :name, "Nombre", class: "col-6" %>
+      <br>
+    <%= f.text_field :name,  placeholder: "Name", required: true, class: "ps-2 col-11 col-md-6 border border-2 border-secondary-subtle rounded", style:"height: 35px" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>( se requiere su password actual para confirmar los cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "mb-2 ps-2 col-7 col-md-3 border border-2 border-secondary-subtle rounded", style:"height: 35px" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Actualizar", class: "btn btn-secondary col-5 col-md-2" %>
+  </div>
+<% end %>
+
+<div class="mt-3">No está contento? <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "mb-3 ps-2 col-5 col-md-2 btn btn-danger", style:"height: 35px" %></div>

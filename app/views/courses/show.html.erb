@@ -1,0 +1,50 @@
+
+<div class="d-flex justify-content-left text-left my-0 p-0">
+  <div class="w-100 w-sm-75">   
+
+    <h2>Curso</h2>
+  
+    <div class="mb-2 w-100 w-sm-50 text-left border border-2 rounded-2 border-secondary-subtle">
+                                        
+      <div class="row pt-2 mx-1 mx-md-2">
+        <strong>
+          Título
+        </strong>
+        <div>
+          <%= @course.title %>
+        </div>
+      </div>
+
+      <div class="row pt-2 mx-1 mx-md-2">
+        <strong>
+          Descripción
+        </strong>
+        <div>
+          <%= @course.description %>
+        </div>
+      </div>
+
+      <div class="row py-2 mx-1 mx-md-2">
+        <strong>
+          Duración
+        </strong>
+        <div>
+          <%= @course.duration %> días
+        </div>
+      </div>
+      <br>
+
+    </div>
+
+
+    <% if current_user.admin? %>
+      <div class="d-flex pt-3 mx-0">
+        <%= link_to   "Editar",   edit_course_path(@course),  class: "px-0 me-3 col-5 col-md-1 btn btn-success" %>
+        <%= button_to "Eliminar", @course, method: :delete,  data: { confirm: "¿Estás seguro?" }, class: "col-5 col-md-1 btn btn-danger", style:"width: 120px"  %>
+      </div>
+    <% else %>
+       <%= render "enrollments/form_show", course: @course, enrollment: @enrollment %>
+    <% end %>    
+    <%= link_to   "Regresar", courses_path, class: "mt-2 col-5 col-md-1 btn btn-light border border-2" %>  
+  </div>
+</div>

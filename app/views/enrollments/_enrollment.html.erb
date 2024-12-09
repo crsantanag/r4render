@@ -1,0 +1,15 @@
+
+<div id="<%= dom_id enrollment %>">
+
+  <tr class="table-light">
+    <th class="text-start" scope="row"> <%= enrollment.course.title %> </th>
+    <td class="text-start"> <%= enrollment.course.description %> </td>
+    <td class="text-start"> <%= enrollment.progress %> </td>
+    <td>
+      <div class="d-flex justify-content-center">
+        <%= link_to "VER",  enrollment, class: "btn btn-danger" %>
+      </div>
+    </td>
+  </tr>
+
+</div>
